@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Reversi</title>
+    <link rel="stylesheet" href="/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>REVERSI</h1>
+            <div id="game-info">
+                <div class="score-card">
+                    <span class="label">BLACK</span>
+                    <span id="score-black" class="score">0</span>
+                </div>
+                <div id="turn-indicator" class="black-turn">BLACK'S TURN</div>
+                <div class="score-card">
+                    <span class="label">WHITE</span>
+                    <span id="score-white" class="score">0</span>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <div id="board-container">
+                <div id="board"></div>
+            </div>
+
+            <aside id="controls">
+                <div class="control-group">
+                    <label>Game Settings</label>
+                    <div class="toggle-group">
+                        <label>Turn Cooldown (s)</label>
+                        <input type="number" id="cooldown" value="0.5" step="0.1" min="0">
+                    </div>
+                </div>
+                <button id="new-game-btn" class="primary-btn">NEW GAME</button>
+                <div id="status-message"></div>
+            </aside>
+        </main>
+
+        <footer>
+            <p>Built with FastAPI & Vanilla JS</p>
+        </footer>
+    </div>
+
+    <!-- Move/Token modal (simulating login/joining) -->
+    <div id="joining-modal" class="modal hidden">
+        <div class="modal-content">
+            <h2>Join Game</h2>
+            <p id="modal-text"></p>
+            <button id="join-black-btn" class="token-btn black">Join as Black</button>
+            <button id="join-white-btn" class="token-btn white">Join as White</button>
+            <button id="spectate-btn" class="token-btn">Spectate</button>
+        </div>
+    </div>
+
+    <script src="/script.js"></script>
+</body>
+
+</html>
