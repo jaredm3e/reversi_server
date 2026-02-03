@@ -1,12 +1,13 @@
 from fastapi import FastAPI, HTTPException, Body, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
-from fastapi.responses import FileResponse, StreamingResponse
+from fastapi.responses import FileResponse, StreamingResponse, RedirectResponse
 from sse_starlette.sse import EventSourceResponse
 from typing import Dict, List
 import asyncio
 import os
 import json
+import uvicorn
 from .game import ReversiGame, GameSettings
 import uuid
 
@@ -119,7 +120,6 @@ async def new_game_redirect():
     # Create a default game and redirect
     game = ReversiGame()
     games[game.game_id] = game
-    from fastapi.responses import RedirectResponse
     return RedirectResponse(url=f"/play/{game.game_id}")
 
 @app.get("/play/{game_id}")
@@ -137,5 +137,4 @@ async def get_site_files(filename: str):
     raise HTTPException(status_code=404)
 
 if __name__ == "__main__":
-    import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=8000)
