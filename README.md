@@ -103,3 +103,9 @@ Reversi is a strategy board game for two players. The goal is to have the majori
 - Moves must "flank" at least one opponent piece in any of the 8 directions.
 - Flanked pieces are flipped to the current player's color.
 - If a player cannot move, they pass. If neither can move, the game ends.
+
+## Testing
+Run the logic verification suite using:
+```bash
+python3 -m pytest
+```
