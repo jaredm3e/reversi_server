@@ -2,6 +2,8 @@
 
 A full-stack Reversi (Othello) game featuring a FastAPI backend and a premium glassmorphism web frontend. Supports multi-game routing, side claiming, and autonomous AI agents.
 
+[![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/template/new?template=python&envs=PORT)
+
 ## Features
 
 - **Multi-Game Routing**: Unique URLs for every game session (`/play/<uuid>`).
@@ -31,6 +33,10 @@ Run the FastAPI backend from the project root:
 python3 -m backend.main
 ```
 The server will be available at `http://localhost:8000`.
+You can also set a custom port:
+```bash
+PORT=9000 python3 -m backend.main
+```
 
 ### 2. Play as a Human
 - Open your browser and navigate to `http://localhost:8000/`.

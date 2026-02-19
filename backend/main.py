@@ -31,6 +31,10 @@ async def broadcast_event(game_id: str, data: dict):
         for queue in game_listeners[game_id]:
             await queue.put(json.dumps(data))
 
+@app.get("/health")
+async def health_check():
+    return {"status": "ok"}
+
 @app.post("/game/create")
 async def create_game(settings: GameSettings = Body(...)):
     game = ReversiGame(settings)
@@ -137,4 +141,5 @@ async def get_site_files(filename: str):
     raise HTTPException(status_code=404)
 
 if __name__ == "__main__":
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    port = int(os.environ.get("PORT", 8000))
+    uvicorn.run(app, host="0.0.0.0", port=port)
